@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 
 
+
 // dejarlo como ejemplo para diferenciar restcontroller
 @Controller
 public class AutorVistaController {

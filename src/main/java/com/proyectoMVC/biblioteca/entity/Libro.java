@@ -1,50 +1,31 @@
 package com.proyectoMVC.biblioteca.entity;
 
+
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.time.LocalDate;
+
+@Getter
+@Setter
+@ToString
+
+@Entity
+@Table(name="libros")
 public class Libro {
-
-
+    @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE)
+    @Column(name="id")
     private Long id;
+
+
     private String titulo;
 
-    private Autor autor;
+  //  @ManytoOne(fetch = FetchType.LAZY)
+  //  private Autor autor;
 
 
-    public Libro(Long id, String titulo, Autor autor) {
-        this.id = id;
-        this.titulo = titulo;
-        this.autor = autor;
-    }
+    @Column(name = "fecha_publicacion")
+    private LocalDate publishingDate;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public Autor getAutor() {
-        return autor;
-    }
-
-    public void setAutor(Autor autor) {
-        this.autor = autor;
-    }
-
-    @Override
-    public String toString() {
-        return "Libro{" +
-                "id=" + id +
-                ", titulo='" + titulo + '\'' +
-                ", autor=" + autor +
-                '}';
-    }
 }

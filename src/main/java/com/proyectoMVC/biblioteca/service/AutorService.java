@@ -1,6 +1,7 @@
 package com.proyectoMVC.biblioteca.service;
 
 import com.proyectoMVC.biblioteca.entity.Autor;
+import com.proyectoMVC.biblioteca.repository.AutorRepository;
 import com.proyectoMVC.biblioteca.repository.IDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,15 @@ import java.util.List;
 public class AutorService {
 
 
+    private final AutorRepository autorRepository;
+
+    public AutorService(AutorRepository autorRepository) {
+
+        this.autorRepository= autorRepository;
+    }
+
+
+/*
     private IDAO <Autor> autorDAO;
 
 
@@ -51,6 +61,6 @@ public class AutorService {
 
     public Autor update(Autor autor){
         return  autorDAO.update(autor);
-    }
+    }*/
 
 }

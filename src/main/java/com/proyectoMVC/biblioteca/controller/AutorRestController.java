@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController // inlcuye response body
+@RestController // incluye response body
 @RequestMapping("/autores")
 public class AutorRestController {
 
