@@ -2,6 +2,7 @@ package com.proyectoMVC.biblioteca.controller;
 
 import com.proyectoMVC.biblioteca.entity.Autor;
 import com.proyectoMVC.biblioteca.service.AutorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,7 @@ public class AutorRestController {
 
    private AutorService autorService;
 
+   @Autowired
     public AutorRestController(AutorService autorService) {
         this.autorService = autorService;
     }
@@ -63,9 +65,36 @@ public class AutorRestController {
     /*  Postman */
     @PostMapping( "/crear")
     public Autor crearAutor(@RequestBody Autor autor) {
-
         return autorService.crear(autor);
+
     }
+
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<?> eliminarAutor(@PathVariable Long id){
+
+        Autor autor= autorService.buscarId(id);
+        if(autor != null){
+            autorService.eliminar(id);
+            return ResponseEntity.ok().body("Autor eliminado");
+        }
+        else{
+            return ResponseEntity.badRequest().body("Id inexistente");
+        } }
+
+    @PutMapping
+    public ResponseEntity<?> modificarAutor(@RequestBody Autor autor)
+    {
+        Autor autorRetornado= autorService.update(autor);
+        if(autorRetornado == null ){
+            return ResponseEntity.status(404).body("Autor inexistente");
+        }
+        else{
+
+            return ResponseEntity.ok().body("Autor modificado" + autorRetornado);
+        }
+
+    }
+
 
 
 }

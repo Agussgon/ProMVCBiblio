@@ -1,5 +1,9 @@
 package com.proyectoMVC.biblioteca.entity;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+
 public class Autor {
 
 
@@ -8,6 +12,7 @@ public class Autor {
 
     private String apellido;
 
+    @Autowired
     public Autor(Long id, String nombre, String apellido) {
         this.id = id;
         this.nombre = nombre;
@@ -45,5 +50,12 @@ public class Autor {
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Autor autor= (Autor)obj;
+       return autor.getId().equals(this.getId());
+
     }
 }

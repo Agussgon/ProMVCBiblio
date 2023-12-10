@@ -58,8 +58,10 @@ public class AutorDAO implements IDAO<Autor> {
         for (Autor auto : autores
         ) {
             if(auto.equals(autor))
-            { auto= autor;
-              aut=auto;
+            {   auto.setNombre(autor.getNombre());
+                auto.setApellido(autor.getApellido());
+                //auto= autor;
+                aut=auto;
 
             }
         }
