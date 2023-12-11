@@ -1,66 +1,47 @@
 package com.proyectoMVC.biblioteca.service;
 
+
 import com.proyectoMVC.biblioteca.entity.Autor;
 import com.proyectoMVC.biblioteca.repository.AutorRepository;
-import com.proyectoMVC.biblioteca.repository.IDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+import java.util.Optional;
 
 @Service
-
 public class AutorService {
 
+private final AutorRepository autorRepository;
 
-    private final AutorRepository autorRepository;
-
-    public AutorService(AutorRepository autorRepository) {
-
-        this.autorRepository= autorRepository;
-    }
-
-
-/*
-    private IDAO <Autor> autorDAO;
-
-
-
-    public AutorService(){}
 
     @Autowired
-    public AutorService(IDAO autorDAO) {
-        this.autorDAO = autorDAO;
+    public AutorService(AutorRepository autorRepository) {
+        this.autorRepository = autorRepository;
     }
 
-    public IDAO getAutorDAO() {
-        return autorDAO;
+    public Optional<Autor> buscarId (Long id){
+
+        return autorRepository.findById(id);
     }
 
-    public void setAutorDAO(IDAO autorDAO) {
-        this.autorDAO = autorDAO;
+    public List<Autor> listarAutores(){
+        return autorRepository.findAll();
+    }
+
+    public void eliminar(Long id){
+
+         autorRepository.deleteById(id);
     }
 
     public Autor crear(Autor autor){
-        return autorDAO.create(autor);
-    }
-    public void eliminar(Long id ){
-       autorDAO.eliminar(id);
 
-    };
-
-    public Autor buscarId(Long id ){
-        return autorDAO.buscarId(id);
+        return  autorRepository.save(autor);
     }
 
-    public List<Autor> listar(){
-        return  autorDAO.listarTodos();
+    public Autor modificar(Autor autor){
+
+        return autorRepository.save(autor);
     }
-
-
-    public Autor update(Autor autor){
-        return  autorDAO.update(autor);
-    }*/
 
 }

@@ -7,8 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import org.springframework.data.annotation.Id;
-
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -17,19 +16,21 @@ import java.util.Set;
 @ToString
 
 @Entity
-@Table(name="autores")
+@Table (name="autores")
 public class Autor {
+
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
-    private int id;
-    @Column(name="nombre")
+    private Long id;
+
+    @Column (name="nombre")
     private String nombre;
 
-    @Column(name="apellido")
+    @Column (name="apellido")
     private String apellido;
 
-  //  @OnetoMany(mappedBy = "libros")private Set<Libro> libros =HashSet< Libro>();
 
-
+    @OneToMany(mappedBy ="autores")
+    Set <Libro> libros= new HashSet<>();
 }
