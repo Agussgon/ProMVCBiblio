@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/autores")
+@CrossOrigin("http://localhost:8081/*")
 public class AutorController {
 
 private final AutorService autorService;

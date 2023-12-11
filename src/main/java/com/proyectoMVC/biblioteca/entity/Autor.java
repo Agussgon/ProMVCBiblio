@@ -31,6 +31,6 @@ public class Autor {
     private String apellido;
 
 
-    @OneToMany(mappedBy ="autores")
+    @OneToMany(mappedBy ="autor")
     Set <Libro> libros= new HashSet<>();
 }
