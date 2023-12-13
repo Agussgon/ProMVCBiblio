@@ -2,14 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!--
+    instrucciones para incluir bootstrap
+    https://getbootstrap.com/docs/5.3/getting-started/introduction/#quick-start
+
+    incluir la etiqueta de diseño responsive-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
 
+    <!--Content Delivery Network (CDN) de Bootstrap.
+    Esto les permitirá enlazar directamente los archivos necesarios desde la web.-->
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- hja css personalizada-->
+    <link rel="stylesheet" href="./style/style.css">
+    
 </head>
-<body>
 
-<p id="autores"></p>
-<script src="./js/autores.js"></script>
+
+
+<body class="flex-left-col">
+<h1>Autores</h1>
+
+
+<div id="container-autores" ></div>
+
+
+
+<script src="js/listarAutores.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>
+
+
+<!--
+Qué es Bootstrap
+https://rockcontent.com/es/blog/bootstrap/#:~:text=Bootstrap%20es%20un%20framework%20front,esta%20tecnolog%C3%ADa%20y%20c%C3%B3mo%20utilizarla!
+
+
+-->

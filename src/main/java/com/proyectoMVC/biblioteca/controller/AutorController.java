@@ -3,7 +3,6 @@ package com.proyectoMVC.biblioteca.controller;
 
 import com.proyectoMVC.biblioteca.entity.Autor;
 import com.proyectoMVC.biblioteca.service.AutorService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +12,10 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/autores")
-@CrossOrigin("http://localhost:8081/*")
+
 public class AutorController {
 
-private final AutorService autorService;
+    private final AutorService autorService;
 
 
     @Autowired
@@ -26,12 +25,12 @@ private final AutorService autorService;
 
     @GetMapping ("/todos")
     public ResponseEntity<?> traerAutores(){
-       List<Autor> autores= autorService.listarAutores();
-       if(autores.size() > 0){
-        return  ResponseEntity.ok().body(autores); }
-       else {
-           return ResponseEntity.status(404).body("No encontrado");
-       }
+        List<Autor> autores= autorService.listarAutores();
+        if(!autores.isEmpty()){
+            return  ResponseEntity.ok().body(autores); }
+        else {
+            return ResponseEntity.status(404).body("No encontrado");
+        }
 
     }
 
@@ -51,7 +50,8 @@ private final AutorService autorService;
 
     @PostMapping("/crear")
     public ResponseEntity<?> crearAutor(@RequestBody Autor autor){
-       Autor autorCreado= null;
+        Autor autorCreado= null;
+        //Falta la validación
         if(autor != null){
             autorCreado= autorService.crear(autor);
             return ResponseEntity.ok().body(autorCreado);
